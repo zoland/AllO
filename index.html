@@ -3,14 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#667eea">
     <title>AllO</title>
+    <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
-    <div class="container">
-        <h1>AllO</h1>
-        <p>Система управления устройствами в локальной сети</p>
-        <div class="status">✅ Проект готов к разработке!</div>
+    <div id="app">
+        <header class="header">
+            <div class="header-left">
+                <button class="logo-btn" id="logoBtn">AllO</button>
+                <div class="system-info" id="systemInfo">WiFi: Готов | Устройств: 0</div>
+            </div>
+            <button class="settings-btn" id="settingsBtn">⚙️</button>
+        </header>
+
+        <main class="main-content">
+            <section class="folders-section">
+                <h3>Управление</h3>
+                <div class="folders-grid">
+                    <div class="folder-card" data-folder="lights">
+                        <div class="folder-icon">💡</div>
+                        <h4>Освещение</h4>
+                        <span class="device-count">0 устройств</span>
+                    </div>
+                    <div class="folder-card" data-folder="climate">
+                        <div class="folder-icon">🌡️</div>
+                        <h4>Климат</h4>
+                        <span class="device-count">0 устройств</span>
+                    </div>
+                    <div class="folder-card" data-folder="security">
+                        <div class="folder-icon">🔒</div>
+                        <h4>Безопасность</h4>
+                        <span class="device-count">0 устройств</span>
+                    </div>
+                    <div class="folder-card" data-folder="media">
+                        <div class="folder-icon">📺</div>
+                        <h4>Медиа</h4>
+                        <span class="device-count">0 устройств</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="tools-section">
+            <div class="tools-grid">
+                <button class="tool-btn" id="connectionBtn">
+                    <span class="tool-icon">📶</span>
+                    <span class="tool-label">Связь</span>
+                </button>
+                <button class="tool-btn" id="contactsBtn">
+                    <span class="tool-icon">👥</span>
+                    <span class="tool-label">Контакты</span>
+                </button>
+                <button class="tool-btn" id="scanBtn">
+                    <span class="tool-icon">🔍</span>
+                    <span class="tool-label">Поиск</span>
+                </button>
+                <button class="tool-btn" id="infoBtn">
+                    <span class="tool-icon">ℹ️</span>
+                    <span class="tool-label">Инфо</span>
+                </button>
+            </div>
+        </footer>
     </div>
+
+    <div class="modal" id="infoModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>О системе AllO</h3>
+                <button class="close-btn" id="closeInfoBtn">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="info-section">
+                    <h4>🏠 AllO v1.0</h4>
+                    <p>Система управления устройствами в локальной сети</p>
+                </div>
+                <div class="info-section">
+                    <h4>👨‍💻 Разработчик</h4>
+                    <p>ZolAnd</p>
+                    <p>GitHub: github.com/zoland</p>
+                </div>
+                <div class="info-section">
+                    <h4>🔧 Система</h4>
+                    <p>Статус: Активна</p>
+                    <p>Подключение: WiFi готов</p>
+                    <p>Устройств найдено: 0</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
 </body>
 </html>
