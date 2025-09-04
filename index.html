@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#1e3a8a">
-    <title>AllO - Folders Manager</title>
-    <link rel="manifest" href="manifest.json">
+    <title>AllO - Test Data Manager</title>
     <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
@@ -22,10 +21,13 @@
                     <span class="wifi-status">📶●●○</span>
                     <span class="battery-status">🔋85%</span>
                 </div>
-                <button class="menu-btn" id="menuBtn">⋯</button>
+                <button class="menu-btn" id="menuBtn">⋮</button>
                 <div class="dropdown-menu" id="headerDropdown">
                     <button class="dropdown-item" onclick="headerComponent.openSettings()">
                         <span>⚙️</span> Настройки
+                    </button>
+                    <button class="dropdown-item" onclick="headerComponent.resetTestData()">
+                        <span>🔄</span> Сбросить данные
                     </button>
                     <button class="dropdown-item" onclick="headerComponent.exportData()">
                         <span>💾</span> Экспорт данных
@@ -35,21 +37,7 @@
         </header>
 
         <main class="main-content">
-            <div class="folders-list">
-                <div class="folder-card add-folder" id="addFolderBtn">
-                    <div class="add-folder-content">
-                        <span class="folder-icon">📁</span>
-                        <span class="add-text">+ Создать папку</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="search-section">
-                <div class="search-bar">
-                    <span class="search-icon">🔍</span>
-                    <input type="text" placeholder="🔍 Поиск в папках..." id="searchInput">
-                </div>
-            </div>
+            <!-- Контент будет загружен через JavaScript -->
         </main>
 
         <footer class="bottom-nav">
@@ -79,29 +67,31 @@
     <div class="modal" id="infoModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>AllO - Управление папками</h3>
+                <h3>AllO - Справочник данных</h3>
                 <button class="close-btn" id="closeInfoBtn">×</button>
             </div>
             <div class="modal-body">
                 <div class="info-section">
-                    <h4>📁 Возможности</h4>
-                    <p>• Создание папок</p>
-                    <p>• Переименование</p>
-                    <p>• Удаление с очисткой связей</p>
+                    <h4>📊 Тестовые данные</h4>
+                    <p>• 4 папки с контактами</p>
+                    <p>• 5 различных устройств</p>
+                    <p>• 3 типа подключений</p>
+                </div>
+                <div class="info-section">
+                    <h4>🔄 Сброс данных</h4>
+                    <p>Используйте меню ⋮ → "Сбросить данные"</p>
+                    <p>для возврата к исходному состоянию</p>
                 </div>
                 <div class="info-section">
                     <h4>👨‍💻 Разработчик</h4>
                     <p>ZolAnd (github.com/zoland)</p>
-                </div>
-                <div class="info-section">
-                    <h4>💾 Хранение</h4>
-                    <p>LocalStorage + автоочистка контактов</p>
                 </div>
             </div>
         </div>
     </div>
 
     <script src="js/utils/notifications.js"></script>
+    <script src="js/utils/testData.js"></script>
     <script src="js/utils/storage.js"></script>
     <script src="js/components/header.js"></script>
     <script src="js/components/navigation.js"></script>

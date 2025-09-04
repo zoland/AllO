@@ -2,6 +2,8 @@
     flex: 1;
     padding: 1rem;
     overflow-y: auto;
+    position: relative;
+    z-index: 10;
 }
 
 .folders-list {
@@ -20,6 +22,7 @@
     cursor: pointer;
     transition: all 0.2s ease;
     user-select: none;
+    position: relative;
 }
 
 .folder-card:active {
@@ -29,15 +32,16 @@
 
 .folder-header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     margin-bottom: 1rem;
+    position: relative;
 }
 
 .folder-info {
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    flex: 1;
 }
 
 .folder-icon {
@@ -52,6 +56,7 @@
 .status-badges {
     display: flex;
     gap: 0.5rem;
+    margin-right: 3rem;
 }
 
 .status-badge {
@@ -70,6 +75,76 @@
 .status-warning { background: var(--warning-color); }
 .status-error { background: var(--error-color); }
 
+.folder-actions {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 50;
+}
+
+.folder-menu-btn {
+    background: rgba(0, 0, 0, 0.2);
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+    line-height: 1;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 51;
+}
+
+.folder-menu-btn:active {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.folder-dropdown {
+    position: fixed;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 0.5rem 0;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    display: none;
+    min-width: 160px;
+    z-index: 9999;
+}
+
+.folder-dropdown.active {
+    display: block !important;
+}
+
+.folder-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+.folder-dropdown-item:active {
+    background: rgba(30, 58, 138, 0.1);
+}
+
+.folder-dropdown-item.danger:active {
+    background: rgba(240, 65, 65, 0.1);
+}
+
 .folder-details {
     display: flex;
     flex-wrap: wrap;
@@ -82,6 +157,29 @@
     display: flex;
     align-items: center;
     gap: 0.25rem;
+}
+
+.add-folder {
+    border: 2px dashed rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    text-align: center;
+}
+
+.add-folder:active {
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.add-folder-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.add-text {
+    font-size: 1.1rem;
+    opacity: 0.7;
 }
 
 .search-section {
@@ -115,77 +213,73 @@
     font-size: 1.2rem;
     opacity: 0.6;
 }
-.folder-actions {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    opacity: 0;
-    transition: opacity 0.2s ease;
+
+/* Portal стили для выпадающих меню */
+#dropdown-portal {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    pointer-events: none !important;
+    z-index: 99999 !important;
 }
 
-.folder-card:hover .folder-actions,
-.folder-card.active .folder-actions {
-    opacity: 1;
+#dropdown-portal .folder-dropdown {
+    position: fixed !important;
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(15px) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 12px !important;
+    padding: 0.5rem 0 !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+    min-width: 160px !important;
+    z-index: 99999 !
+cat >> css/modules/folders.css << 'CSS'
+
+/* Portal стили для выпадающих меню */
+#dropdown-portal {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    pointer-events: none !important;
+    z-index: 99999 !important;
 }
 
-.folder-menu-btn {
-    background: rgba(0, 0, 0, 0.3);
-    border: none;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-    padding: 0.25rem 0.5rem;
-    border-radius: 50%;
-    transition: background-color 0.2s ease;
+#dropdown-portal .folder-dropdown {
+    position: fixed !important;
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(15px) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 12px !important;
+    padding: 0.5rem 0 !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+    min-width: 160px !important;
+    z-index: 99999 !important;
+    pointer-events: auto !important;
 }
 
-.folder-menu-btn:active {
-    background: rgba(0, 0, 0, 0.5);
+#dropdown-portal .folder-dropdown-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+    padding: 0.75rem 1rem !important;
+    color: #333 !important;
+    cursor: pointer !important;
+    transition: background-color 0.2s ease !important;
+    border: none !important;
+    background: none !important;
+    width: 100% !important;
+    text-align: left !important;
+    font-size: 0.9rem !important;
 }
 
-.folder-dropdown {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
-    border-radius: 8px;
-    padding: 0.25rem 0;
-    margin-top: 0.25rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    display: none;
-    min-width: 120px;
-    z-index: 50;
+#dropdown-portal .folder-dropdown-item:active {
+    background: rgba(30, 58, 138, 0.1) !important;
 }
 
-.folder-dropdown.active {
-    display: block;
-}
-
-.folder-dropdown-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 0.75rem;
-    color: #333;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    border: none;
-    background: none;
-    width: 100%;
-    text-align: left;
-    font-size: 0.9rem;
-}
-
-.folder-dropdown-item:active {
-    background: rgba(30, 58, 138, 0.1);
-}
-
-.folder-dropdown-item.danger:active {
-    background: rgba(240, 65, 65, 0.1);
-}
-
-.folder-card {
-    position: relative;
+#dropdown-portal .folder-dropdown-item.danger:active {
+    background: rgba(240, 65, 65, 0.1) !important;
 }

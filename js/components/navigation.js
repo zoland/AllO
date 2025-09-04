@@ -5,14 +5,28 @@ class NavigationComponent {
     }
 
     bindEvents() {
-        ["connectionBtn", "contactsBtn", "settingsNavBtn", "networkBtn", "voiceBtn"].forEach(id => {
-            document.getElementById(id).addEventListener("click", () => this.switchNav(id));
+        const navButtons = ["connectionBtn", "contactsBtn", "settingsNavBtn", "networkBtn", "voiceBtn"];
+        
+        navButtons.forEach(id => {
+            const btn = document.getElementById(id);
+            if (btn) {
+                btn.addEventListener("click", () => this.switchNav(id));
+            }
         });
     }
 
     switchNav(btnId) {
-        document.querySelectorAll(".nav-btn").forEach(btn => btn.classList.remove("active"));
-        document.getElementById(btnId).classList.add("active");
+        // Убираем активный класс со всех кнопок
+        document.querySelectorAll(".nav-btn").forEach(btn => {
+            btn.classList.remove("active");
+        });
+        
+        // Добавляем активный класс к выбранной кнопке
+        const activeBtn = document.getElementById(btnId);
+        if (activeBtn) {
+            activeBtn.classList.add("active");
+        }
+        
         this.activeBtn = btnId;
         this.handleNavAction(btnId);
     }
@@ -25,6 +39,10 @@ class NavigationComponent {
             networkBtn: () => NotificationManager.show("🌐 Сканирование сети...", "info"),
             voiceBtn: () => NotificationManager.show("📝 Голосовые команды готовы", "info")
         };
-        actions[btnId]?.();
+        
+        const action = actions[btnId];
+        if (action) {
+            action();
+        }
     }
 }

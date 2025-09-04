@@ -30,3 +30,28 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+/* КРИТИЧНО: Глобальные z-index уровни */
+.header {
+    z-index: 100;
+}
+
+.header .dropdown-menu {
+    z-index: 9999 !important;
+}
+
+.main-content {
+    z-index: 10;
+}
+
+.folder-dropdown {
+    z-index: 8888 !important;
+}
+
+.bottom-nav {
+    z-index: 200;
+}
+
+.modal {
+    z-index: 10000 !important;
+}

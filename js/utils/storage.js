@@ -1,10 +1,21 @@
 class StorageManager {
     static FOLDERS_KEY = "allo_folders";
     static CONTACTS_KEY = "allo_contacts";
+    static CONNECTIONS_KEY = "allo_connections";
 
     static getFolders() {
         const folders = localStorage.getItem(this.FOLDERS_KEY);
-        return folders ? JSON.parse(folders) : this.getDefaultFolders();
+        if (folders) {
+            return JSON.parse(folders);
+        }
+        
+        // Если нет данных и включен тестовый режим - инициализируем
+        if (TestDataManager.TEST_MODE) {
+            TestDataManager.initTestData();
+            return JSON.parse(localStorage.getItem(this.FOLDERS_KEY)) || [];
+        }
+        
+        return [];
     }
 
     static saveFolders(folders) {
@@ -13,11 +24,34 @@ class StorageManager {
 
     static getContacts() {
         const contacts = localStorage.getItem(this.CONTACTS_KEY);
-        return contacts ? JSON.parse(contacts) : [];
+        if (contacts) {
+            return JSON.parse(contacts);
+        }
+        
+        // Если нет данных и включен тестовый режим - инициализируем
+        if (TestDataManager.TEST_MODE) {
+            TestDataManager.initTestData();
+            return JSON.parse(localStorage.getItem(this.CONTACTS_KEY)) || [];
+        }
+        
+        return [];
     }
 
     static saveContacts(contacts) {
         localStorage.setItem(this.CONTACTS_KEY, JSON.stringify(contacts));
+    }
+
+    static getConnections() {
+        const connections = localStorage.getItem(this.CONNECTIONS_KEY);
+        if (connections) {
+            return JSON.parse(connections);
+        }
+        
+        if (TestDataManager.TEST_MODE) {
+            return TestDataManager.getTestConnections();
+        }
+        
+        return [];
     }
 
     static createFolder(name, icon = "📁") {
@@ -64,39 +98,8 @@ class StorageManager {
         this.saveContacts(updatedContacts);
     }
 
-    static getDefaultFolders() {
-        return [
-            {
-                id: "all",
-                name: "ВСЕ",
-                icon: "📁",
-                deviceCount: 12,
-                statusOk: 3,
-                statusWarning: 2,
-                statusError: 1,
-                details: [],
-                system: true
-            },
-            {
-                id: "home",
-                name: "Дом",
-                icon: "��",
-                deviceCount: 5,
-                statusOk: 2,
-                statusWarning: 1,
-                statusError: 0,
-                details: ["🌡️25°C", "💧85%", "⚡2"]
-            },
-            {
-                id: "work",
-                name: "Работа",
-                icon: "📁",
-                deviceCount: 3,
-                statusOk: 1,
-                statusWarning: 0,
-                statusError: 1,
-                details: ["🔴 Сервер недоступен"]
-            }
-        ];
+    // Метод для сброса данных (только в тестовом режиме)
+    static resetData() {
+        return TestDataManager.resetToTestData();
     }
 }
