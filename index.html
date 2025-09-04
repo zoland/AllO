@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#1e3a8a">
-    <title>AllO - Modular</title>
+    <title>AllO - Folders Manager</title>
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="css/app.css">
 </head>
@@ -22,44 +22,20 @@
                     <span class="wifi-status">📶●●○</span>
                     <span class="battery-status">🔋85%</span>
                 </div>
-                <button class="settings-btn" id="settingsBtn">⚙️</button>
+                <button class="menu-btn" id="menuBtn">⋯</button>
+                <div class="dropdown-menu" id="headerDropdown">
+                    <button class="dropdown-item" onclick="headerComponent.openSettings()">
+                        <span>⚙️</span> Настройки
+                    </button>
+                    <button class="dropdown-item" onclick="headerComponent.exportData()">
+                        <span>💾</span> Экспорт данных
+                    </button>
+                </div>
             </div>
         </header>
 
         <main class="main-content">
             <div class="folders-list">
-                <div class="folder-card" data-folder="all">
-                    <div class="folder-header">
-                        <div class="folder-info">
-                            <span class="folder-icon">📁</span>
-                            <span class="folder-name">ВСЕ (12)</span>
-                        </div>
-                        <div class="status-badges">
-                            <span class="status-badge status-ok">3</span>
-                            <span class="status-badge status-warning">2</span>
-                            <span class="status-badge status-error">1</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="folder-card" data-folder="home">
-                    <div class="folder-header">
-                        <div class="folder-info">
-                            <span class="folder-icon">📁</span>
-                            <span class="folder-name">Дом (5)</span>
-                        </div>
-                        <div class="status-badges">
-                            <span class="status-badge status-ok">2</span>
-                            <span class="status-badge status-warning">1</span>
-                        </div>
-                    </div>
-                    <div class="folder-details">
-                        <span class="detail-item">🌡️25°C</span>
-                        <span class="detail-item">💧85%</span>
-                        <span class="detail-item">⚡2</span>
-                    </div>
-                </div>
-
                 <div class="folder-card add-folder" id="addFolderBtn">
                     <div class="add-folder-content">
                         <span class="folder-icon">📁</span>
@@ -103,28 +79,30 @@
     <div class="modal" id="infoModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>AllO - Модульная архитектура</h3>
+                <h3>AllO - Управление папками</h3>
                 <button class="close-btn" id="closeInfoBtn">×</button>
             </div>
             <div class="modal-body">
                 <div class="info-section">
-                    <h4>🏗️ Архитектура</h4>
-                    <p>Модульная структура CSS и JS</p>
-                    <p>Легкое масштабирование и поддержка</p>
+                    <h4>📁 Возможности</h4>
+                    <p>• Создание папок</p>
+                    <p>• Переименование</p>
+                    <p>• Удаление с очисткой связей</p>
                 </div>
                 <div class="info-section">
                     <h4>👨‍💻 Разработчик</h4>
                     <p>ZolAnd (github.com/zoland)</p>
                 </div>
                 <div class="info-section">
-                    <h4>📊 Компоненты</h4>
-                    <p>Header | Folders | Navigation | Modal</p>
+                    <h4>💾 Хранение</h4>
+                    <p>LocalStorage + автоочистка контактов</p>
                 </div>
             </div>
         </div>
     </div>
 
     <script src="js/utils/notifications.js"></script>
+    <script src="js/utils/storage.js"></script>
     <script src="js/components/header.js"></script>
     <script src="js/components/navigation.js"></script>
     <script src="js/components/folders.js"></script>

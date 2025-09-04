@@ -1,20 +1,20 @@
 class AllO {
     constructor() {
-        console.log("🚀 AllO Modular запущен");
+        console.log("🚀 AllO Folders Manager запущен");
         this.init();
     }
 
     init() {
-        this.header = new HeaderComponent();
-        this.navigation = new NavigationComponent();
-        this.folders = new FoldersComponent();
-        this.modal = new ModalComponent();
-        this.updateStats();
+        window.headerComponent = new HeaderComponent();
+        window.navigationComponent = new NavigationComponent();
+        window.foldersComponent = new FoldersComponent();
+        window.modalComponent = new ModalComponent();
+        this.showWelcome();
     }
 
-    updateStats() {
+    showWelcome() {
         setTimeout(() => {
-            NotificationManager.show("📊 Модульная архитектура загружена", "success");
+            NotificationManager.show("📁 Управление папками активно", "success");
         }, 1000);
     }
 }
