@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#667eea">
+    <meta name="theme-color" content="#1e3a8a">
     <title>AllO</title>
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="css/app.css">
@@ -12,59 +12,107 @@
     <div id="app">
         <header class="header">
             <div class="header-left">
-                <button class="logo-btn" id="logoBtn">AllO</button>
-                <div class="system-info" id="systemInfo">WiFi: Готов | Устройств: 0</div>
+                <button class="logo-btn" id="logoBtn">
+                    <span class="home-icon">🏠</span>
+                    <span class="logo-text">ALLO</span>
+                </button>
             </div>
-            <button class="settings-btn" id="settingsBtn">⚙️</button>
+            <div class="header-right">
+                <div class="status-indicators">
+                    <span class="wifi-status">📶●●○</span>
+                    <span class="battery-status">🔋85%</span>
+                </div>
+                <button class="settings-btn" id="settingsBtn">⚙️</button>
+            </div>
         </header>
 
         <main class="main-content">
-            <section class="folders-section">
-                <h3>Управление</h3>
-                <div class="folders-grid">
-                    <div class="folder-card" data-folder="lights">
-                        <div class="folder-icon">💡</div>
-                        <h4>Освещение</h4>
-                        <span class="device-count">0 устройств</span>
-                    </div>
-                    <div class="folder-card" data-folder="climate">
-                        <div class="folder-icon">🌡️</div>
-                        <h4>Климат</h4>
-                        <span class="device-count">0 устройств</span>
-                    </div>
-                    <div class="folder-card" data-folder="security">
-                        <div class="folder-icon">🔒</div>
-                        <h4>Безопасность</h4>
-                        <span class="device-count">0 устройств</span>
-                    </div>
-                    <div class="folder-card" data-folder="media">
-                        <div class="folder-icon">📺</div>
-                        <h4>Медиа</h4>
-                        <span class="device-count">0 устройств</span>
+            <div class="folders-list">
+                <div class="folder-card" data-folder="all">
+                    <div class="folder-header">
+                        <div class="folder-info">
+                            <span class="folder-icon">📁</span>
+                            <span class="folder-name">ВСЕ (12)</span>
+                        </div>
+                        <div class="status-badges">
+                            <span class="status-badge status-ok">3</span>
+                            <span class="status-badge status-warning">2</span>
+                            <span class="status-badge status-error">1</span>
+                        </div>
                     </div>
                 </div>
-            </section>
+
+                <div class="folder-card" data-folder="home">
+                    <div class="folder-header">
+                        <div class="folder-info">
+                            <span class="folder-icon">📁</span>
+                            <span class="folder-name">Дом (5)</span>
+                        </div>
+                        <div class="status-badges">
+                            <span class="status-badge status-ok">2</span>
+                            <span class="status-badge status-warning">1</span>
+                        </div>
+                    </div>
+                    <div class="folder-details">
+                        <span class="detail-item">��️25°C</span>
+                        <span class="detail-item">💧85%</span>
+                        <span class="detail-item">⚡2</span>
+                    </div>
+                </div>
+
+                <div class="folder-card" data-folder="work">
+                    <div class="folder-header">
+                        <div class="folder-info">
+                            <span class="folder-icon">📁</span>
+                            <span class="folder-name">Работа (3)</span>
+                        </div>
+                        <div class="status-badges">
+                            <span class="status-badge status-ok">1</span>
+                            <span class="status-badge status-error">1</span>
+                        </div>
+                    </div>
+                    <div class="folder-details">
+                        <span class="detail-item">🔴 Сервер недоступен</span>
+                    </div>
+                </div>
+
+                <div class="folder-card add-folder" id="addFolderBtn">
+                    <div class="add-folder-content">
+                        <span class="folder-icon">📁</span>
+                        <span class="add-text">+ Создать папку</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="search-section">
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" placeholder="🔍 Поиск в папках..." id="searchInput">
+                </div>
+            </div>
         </main>
 
-        <footer class="tools-section">
-            <div class="tools-grid">
-                <button class="tool-btn" id="connectionBtn">
-                    <span class="tool-icon">📶</span>
-                    <span class="tool-label">Связь</span>
-                </button>
-                <button class="tool-btn" id="contactsBtn">
-                    <span class="tool-icon">👥</span>
-                    <span class="tool-label">Контакты</span>
-                </button>
-                <button class="tool-btn" id="scanBtn">
-                    <span class="tool-icon">🔍</span>
-                    <span class="tool-label">Поиск</span>
-                </button>
-                <button class="tool-btn" id="infoBtn">
-                    <span class="tool-icon">ℹ️</span>
-                    <span class="tool-label">Инфо</span>
-                </button>
-            </div>
+        <footer class="bottom-nav">
+            <button class="nav-btn active" id="connectionBtn">
+                <span class="nav-icon">📶</span>
+                <span class="nav-label">СВЯЗЬ</span>
+            </button>
+            <button class="nav-btn" id="contactsBtn">
+                <span class="nav-icon">👥</span>
+                <span class="nav-label">КОНТАКТЫ</span>
+            </button>
+            <button class="nav-btn" id="settingsNavBtn">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-label">НАСТРОЙКИ</span>
+            </button>
+            <button class="nav-btn" id="networkBtn">
+                <span class="nav-icon">🌐</span>
+                <span class="nav-label">СЕТЬ</span>
+            </button>
+            <button class="nav-btn" id="voiceBtn">
+                <span class="nav-icon">📝</span>
+                <span class="nav-label">ГОЛОС</span>
+            </button>
         </footer>
     </div>
 
@@ -77,18 +125,15 @@
             <div class="modal-body">
                 <div class="info-section">
                     <h4>🏠 AllO v1.0</h4>
-                    <p>Система управления устройствами в локальной сети</p>
+                    <p>Система управления устройствами</p>
                 </div>
                 <div class="info-section">
                     <h4>👨‍💻 Разработчик</h4>
-                    <p>ZolAnd</p>
-                    <p>GitHub: github.com/zoland</p>
+                    <p>ZolAnd (github.com/zoland)</p>
                 </div>
                 <div class="info-section">
-                    <h4>🔧 Система</h4>
-                    <p>Статус: Активна</p>
-                    <p>Подключение: WiFi готов</p>
-                    <p>Устройств найдено: 0</p>
+                    <h4>📊 Статистика</h4>
+                    <p>Устройств: 12 | Активных: 8 | Ошибок: 2</p>
                 </div>
             </div>
         </div>
