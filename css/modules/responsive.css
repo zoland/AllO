@@ -1,0 +1,23 @@
+@media (max-width: 768px) {
+    .header {
+        padding: 1rem;
+    }
+    .main-content {
+        padding: 1rem;
+    }
+    .folder-card {
+        padding: 1rem;
+    }
+    .nav-label {
+        font-size: 0.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .status-indicators {
+        display: none;
+    }
+    .folder-details {
+        font-size: 0.8rem;
+    }
+}
