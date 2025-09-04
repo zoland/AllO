@@ -1,0 +1,7 @@
+{
+  "name": "AllO",
+  "short_name": "AllO",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#667eea"
+}

@@ -1,0 +1,6 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, sans-serif; background: linear-gradient(135deg, #667eea, #764ba2); min-height: 100vh; color: white; }
+.container { max-width: 800px; margin: 0 auto; padding: 2rem; text-align: center; }
+h1 { font-size: 3rem; margin-bottom: 1rem; }
+p { font-size: 1.2rem; opacity: 0.9; margin-bottom: 2rem; }
+.status { background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 10px; }
