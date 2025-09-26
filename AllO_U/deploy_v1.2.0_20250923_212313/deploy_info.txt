@@ -1,0 +1,10 @@
+AllO_G Deployment
+Version: v1.2.0
+Date: вторник, 23 сентября 2025 г. 21:23:13 (+07)
+Features:
+- 4-button navigation with Locator
+- My Profile with avatar support
+- Dropdown menu
+- Profile visibility settings
+- Callsign uniqueness check
+- Image compression service
