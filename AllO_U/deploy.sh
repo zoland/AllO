@@ -5,7 +5,7 @@
 echo "🚀 Deploying AllO_G v1.2.0..."
 
 # Create version tag
-VERSION="v1.2.0"
+VERSION="U_v1.2.0"
 TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
 DEPLOY_DIR="deploy_${VERSION}_${TIMESTAMP}"
 
