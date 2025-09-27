@@ -1,7 +1,7 @@
 // Application constants
 const APP_CONSTANTS = {
     VERSION: '1.1.0',
-    APP_NAME: 'AllO_G',
+    APP_NAME: 'AllO_U',
     APP_DESCRIPTION: 'Театральный коммуникатор',
     
     // Event types

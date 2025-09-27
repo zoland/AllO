@@ -1,7 +1,7 @@
 {
-    "name": "AllO_G - Театральный коммуникатор",
-    "short_name": "AllO_G",
-    "description": "Универсальная платформа управления и коммуникации",
+    "name": "AllO_U - Домашний коммуникатор",
+    "short_name": "AllO_U",
+    "description": "Универсальная платформа коммуникации и управления дроидами",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#0f0f1e",

@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#1a1a2e">
+    
     <title>AllO_U - Театральный коммуникатор</title>
     
     <!-- PWA -->
     <link rel="manifest" href="./manifest.json">
-    <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
     <!-- Favicon -->
@@ -18,6 +19,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="./css/styles.css">
 </head>
+
 <body>
     <div id="app">
         <!-- Header -->
@@ -72,6 +74,52 @@
             </button>
         </nav>
 
+        <!-- About Modal -->
+        <div class="modal" id="aboutModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>О приложении</h2>
+                    <button class="close-btn" id="closeAbout">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="app-info">
+                        <h3>🎭 AllO_U</h3>
+                        <p>Универсальная платформа управления и коммуникации</p>
+                        <div class="info-details">
+                            <p><strong>Версия:</strong> 1.2.0</p>
+                            <p><strong>Автор:</strong> AllO_U Team</p>
+                            <p><strong>Лицензия:</strong> MIT</p>
+                            <p><strong>Сборка:</strong> 2024</p>
+                        </div>
+                    </div>
+                    <div class="test-data-section">
+                        <h4>⚠️ Тестовые данные</h4>
+                        <p>Сбросить все данные и загрузить тестовый набор?</p>
+                        <button class="btn btn-danger" id="resetDataBtn">
+                            🔄 Сбросить данные
+                        </button>
+                    </div>
+                    <div class="help-section">
+                        <h4>📖 Справка</h4>
+                        <p><strong>Навигация:</strong></p>
+                        <ul style="text-align: left; margin: 10px 0;">
+                            <li>Тап по участнику - открыть детали</li>
+                            <li>Тап на ⭐ - добавить в избранное</li>
+                            <li>Свайп влево - удалить</li>
+                            <li>Клик на логотип - эта справка</li>
+                        </ul>
+                        <p><strong>Индикаторы:</strong></p>
+                        <ul style="text-align: left; margin: 10px 0;">
+                            <li>🟢 В сети</li>
+                            <li>🟡 Занят</li>
+                            <li>🔴 Недоступен</li>
+                            <li>⚫ Офлайн</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
         <!-- Profile Modal -->
         <div class="modal" id="profileModal">
             <div class="modal-content">
@@ -128,52 +176,6 @@
                         <button class="btn btn-primary" id="saveProfileBtn">
                             💾 Сохранить
                         </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- About Modal -->
-        <div class="modal" id="aboutModal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2>О приложении</h2>
-                    <button class="close-btn" id="closeAbout">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="app-info">
-                        <h3>🎭 AllO_U</h3>
-                        <p>Универсальная платформа управления и коммуникации</p>
-                        <div class="info-details">
-                            <p><strong>Версия:</strong> 1.2.0</p>
-                            <p><strong>Автор:</strong> AllO_U Team</p>
-                            <p><strong>Лицензия:</strong> MIT</p>
-                            <p><strong>Сборка:</strong> 2024</p>
-                        </div>
-                    </div>
-                    <div class="test-data-section">
-                        <h4>⚠️ Тестовые данные</h4>
-                        <p>Сбросить все данные и загрузить тестовый набор?</p>
-                        <button class="btn btn-danger" id="resetDataBtn">
-                            🔄 Сбросить данные
-                        </button>
-                    </div>
-                    <div class="help-section">
-                        <h4>📖 Справка</h4>
-                        <p><strong>Навигация:</strong></p>
-                        <ul style="text-align: left; margin: 10px 0;">
-                            <li>Тап по участнику - открыть детали</li>
-                            <li>Тап на ⭐ - добавить в избранное</li>
-                            <li>Свайп влево - удалить</li>
-                            <li>Клик на логотип - эта справка</li>
-                        </ul>
-                        <p><strong>Индикаторы:</strong></p>
-                        <ul style="text-align: left; margin: 10px 0;">
-                            <li>🟢 В сети</li>
-                            <li>🟡 Занят</li>
-                            <li>🔴 Недоступен</li>
-                            <li>⚫ Офлайн</li>
-                        </ul>
                     </div>
                 </div>
             </div>

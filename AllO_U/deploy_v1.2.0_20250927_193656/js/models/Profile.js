@@ -32,7 +32,6 @@ class Profile {
     }
 
     isValidPhone(phone) {
-        // Простая проверка для российских номеров
         const cleaned = phone.replace(/\D/g, '');
         return cleaned.length === 11 && (cleaned.startsWith('7') || cleaned.startsWith('8'));
     }
