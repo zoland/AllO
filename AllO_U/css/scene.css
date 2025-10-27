@@ -1,0 +1,108 @@
+@import url("./styles.css");
+
+.scene-app {
+  max-width: 414px;
+  margin: 0 auto;
+  padding: 20px 16px 80px;
+  color: var(--text-primary);
+  background: var(--app-bg); /* подложка из существующих переменных */
+}
+
+.scene-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.scene-menu-btn,
+.scene-anchor-btn {
+  border: none;
+  border-radius: var(--border-radius-sm);
+  background: rgba(255, 255, 255, 0.14);
+  color: inherit;
+  padding: 8px 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.scene-summary {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-md);
+}
+
+.scene-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(15, 16, 28, 0.6);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  box-shadow: 0 18px 36px var(--shadow-color);
+}
+
+.scene-table th,
+.scene-table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.scene-table tr:last-child td {
+  border-bottom: none;
+}
+
+.scene-table td.dir {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.scene-table td.dir span {
+  display: block;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.status-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+.status-dot.online { background: var(--success-color); }
+.status-dot.idle { background: #6f8bff; }
+.status-dot.stale { background: var(--warning-color); }
+
+.scene-table tr.favorite { background: rgba(255, 255, 255, 0.08); }
+.scene-table tr.swipe-right { background: rgba(70, 223, 165, 0.18); }
+.scene-table tr.swipe-left { background: rgba(255, 202, 100, 0.18); }
+.scene-table tr.longpress { background: rgba(123, 93, 240, 0.22); }
+
+#sceneMenu {
+  position: fixed;
+  inset: auto 16px 24px 16px;
+  background: rgba(15, 18, 34, 0.92);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-md);
+  display: grid;
+  gap: var(--spacing-sm);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+}
+#sceneMenu button {
+  border: none;
+  border-radius: var(--border-radius-sm);
+  padding: 14px;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.12);
+  color: inherit;
+  cursor: pointer;
+  transition: var(--transition);
+}
+#sceneMenu button:hover {
+  background: rgba(255, 255, 255, 0.18);
+}

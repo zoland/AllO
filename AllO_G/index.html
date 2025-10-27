@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1976D2">
+    <title>AllO_G Коммуникатор</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div id="app">
+        <header class="header">
+            <div class="header-left">
+                <div class="logo" onclick="showInfo()">AllO_G</div>
+            </div>
+            <div class="header-right">
+                <div class="protocols">
+                    <div class="protocol-item" id="protocol-I" onclick="showProtocolInfo('I')">
+                        <span class="protocol-letter">I</span>
+                        <span class="protocol-status" id="status-I">🟢4G</span>
+                    </div>
+                    <div class="protocol-item" id="protocol-W" onclick="showProtocolInfo('W')">
+                        <span class="protocol-letter">W</span>
+                        <span class="protocol-status" id="status-W">⚫</span>
+                    </div>
+                    <div class="protocol-item" id="protocol-A" onclick="showProtocolInfo('A')">
+                        <span class="protocol-letter">A</span>
+                        <span class="protocol-status" id="status-A">⚫</span>
+                    </div>
+                    <div class="protocol-item" id="protocol-Z" onclick="showProtocolInfo('Z')">
+                        <span class="protocol-letter">Z</span>
+                        <span class="protocol-status" id="status-Z">⚫</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="participants-section">
+            <div class="participants-list" id="participantsList">
+            </div>
+        </main>
+
+        <footer class="actions-section" id="actionsSection">
+            <div class="action-btn" onclick="openDialer()">
+                <div class="action-icon-footer">📞</div>
+                <div class="action-label">Связь</div>
+            </div>
+            <div class="action-btn" onclick="openGroupActions()">
+                <div class="action-icon-footer">👥</div>
+                <div class="action-label">Группа</div>
+            </div>
+            <div class="action-btn" onclick="openMap()">
+                <div class="action-icon-footer">📍</div>
+                <div class="action-label">Карта</div>
+            </div>
+            <div class="action-btn" onclick="openVoiceCommands()">
+                <div class="action-icon-footer">🎤</div>
+                <div class="action-label">Голос</div>
+            </div>
+            <div class="action-btn" onclick="openHelp()">
+                <div class="action-icon-footer">❓</div>
+                <div class="action-label">Справка</div>
+            </div>
+            <div class="action-btn" onclick="openSettings()">
+                <div class="action-icon-footer">⚙️</div>
+                <div class="action-label">Настройки</div>
+            </div>
+        </footer>
+    </div>
+
+    <div class="popup-overlay" id="infoPopup" onclick="hideInfo()">
+        <div class="popup-content" onclick="event.stopPropagation()">
+            <div class="popup-header">
+                <h3>Коммуникатор AllO_G</h3>
+                <button class="popup-close" onclick="hideInfo()">×</button>
+            </div>
+            <div class="popup-body">
+                <div class="version">v1.1.5</div>
+                <div class="description">
+                    Гибридный коммуникатор для координации команд
+                </div>
+                <div class="features">
+                    <div>📞 Мультипротокольная связь</div>
+                    <div>👥 Управление участниками</div>
+                    <div>🌐 Локальные и интернет-соединения</div>
+                    <div>🎭 Гибкая система ролей в сценах</div>
+                    <div>⭐ Система избранного</div>
+                    <div>📢 Вызов по позывным</div>
+                    <div>🧩 Модульная архитектура</div>
+                    <div>👤 Тап для портфолио</div>
+                    <div>🎯 Иконки действий в карточках</div>
+                </div>
+                <div class="author">Автор: ZolAnd</div>
+                <div class="build">Build: 2024.01.15</div>
+                <div class="help-section">
+                    <button class="help-btn" onclick="openHelp()">📖 Справка по использованию</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup-overlay" id="protocolPopup" onclick="hideProtocolInfo()">
+        <div class="popup-content small" onclick="event.stopPropagation()">
+            <div class="popup-header">
+                <h3 id="protocolTitle">Протокол связи</h3>
+                <button class="popup-close" onclick="hideProtocolInfo()">×</button>
+            </div>
+            <div class="popup-body" id="protocolInfo">
+            </div>
+        </div>
+    </div>
+
+    <div class="popup-overlay" id="createParticipantPopup" onclick="hideCreateParticipant()">
+        <div class="popup-content" onclick="event.stopPropagation()">
+            <div class="popup-header">
+                <h3>Новый участник</h3>
+                <button class="popup-close" onclick="hideCreateParticipant()">×</button>
+            </div>
+            <div class="popup-body">
+                <form id="participantForm" onsubmit="saveParticipant(event)">
+                    <div class="form-group">
+                        <label>Позывной *</label>
+                        <input type="text" id="callsign" placeholder="🎭 Эхо" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Истинное имя</label>
+                        <input type="text" id="realName" placeholder="Александр Волков">
+                    </div>
+                    <div class="form-group">
+                        <label>Номер телефона *</label>
+                        <input type="tel" id="phoneNumber" placeholder="+7 (999) 123-45-67" required>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="isFavorite">
+                            <span class="checkmark">⭐</span>
+                            Добавить в избранное
+                        </label>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">💾 Сохранить</button>
+                        <button type="button" class="btn-secondary" onclick="hideCreateParticipant()">❌ Отмена</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup-overlay" id="quickContactPopup" onclick="hideQuickContact()">
+        <div class="popup-content" onclick="event.stopPropagation()">
+            <div class="popup-header">
+                <h3>Оперативная связь</h3>
+                <button class="popup-close" onclick="hideQuickContact()">×</button>
+            </div>
+            <div class="popup-body">
+                <div class="quick-contact-options">
+                    <div class="quick-option" onclick="openIncognitoCall()">
+                        <div class="option-icon">📞</div>
+                        <div class="option-content">
+                            <div class="option-title">Инкогнито звонок</div>
+                            <div class="option-description">Прямой звонок по номеру</div>
+                        </div>
+                    </div>
+                    <div class="quick-option" onclick="openCallsignSearch()">
+                        <div class="option-icon">📢</div>
+                        <div class="option-content">
+                            <div class="option-title">Вызов по позывному</div>
+                            <div class="option-description">Поиск участника по позывному</div>
+                        </div>
+                    </div>
+                    <div class="quick-option" onclick="searchInNetwork()">
+                        <div class="option-icon">🔍</div>
+                        <div class="option-content">
+                            <div class="option-title">Поиск в сети</div>
+                            <div class="option-description">Найти участников в локальной сети</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="context-menu" id="participantMenu">
+        <div class="menu-item" onclick="viewHistory()">📋 История</div>
+        <div class="menu-item" onclick="manageRoles()">🎭 Роли</div>
+        <div class="menu-item" onclick="manageCommunications()">📞 Связь</div>
+        <div class="menu-item" onclick="toggleFavorite()">⭐ Избранное</div>
+        <div class="menu-item warning" onclick="toggleParticipantBlock()">🚫 Блокировка</div>
+        <div class="menu-item danger" onclick="removeParticipant()">🗑️ Удалить</div>
+    </div>
+
+    <script src="js/participants.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("sw.js").then(() => {
+                console.log("SW зарегистрирован");
+            });
+        }
+    </script>
+</body>
+</html>

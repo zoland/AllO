@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#1a1a2e">
     
-    <title>AllO_U - Домашний коммуникатор</title>
+    <title>AllO_U - Театральный коммуникатор</title>
     
     <!-- PWA -->
     <link rel="manifest" href="./manifest.json">
@@ -54,7 +54,7 @@
             <!-- Dynamic content loads here -->
         </main>
 
-        <!-- Navigation -->
+        <!-- Navigation - 4 buttons -->
         <nav class="app-nav">
             <button class="nav-btn active" data-view="scenes">
                 <span class="nav-icon">🎬</span>
@@ -71,10 +71,6 @@
             <button class="nav-btn" data-view="locator">
                 <span class="nav-icon">📡</span>
                 <span class="nav-label">Локатор</span>
-            </button>
-            <button class="nav-btn nav-btn--external" id="sceneVisualizerBtn" type="button">
-                <span class="nav-icon">🧭</span>
-                <span class="nav-label">Сцена</span>
             </button>
         </nav>
 
@@ -133,6 +129,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="profile-form">
+                        <!-- Avatar -->
                         <div class="avatar-section">
                             <div class="avatar-preview" id="avatarPreview">
                                 <span>👤</span>
@@ -142,7 +139,8 @@
                             </button>
                             <input type="file" id="avatarInput" accept="image/*" style="display: none;">
                         </div>
-
+                        
+                        <!-- Form fields -->
                         <div class="form-group">
                             <label for="callsignInput">Позывной *</label>
                             <input type="text" id="callsignInput" maxlength="20" placeholder="Альфа">
@@ -158,6 +156,7 @@
                             <input type="tel" id="phoneInput" placeholder="+7 900 123-45-67">
                         </div>
                         
+                        <!-- Visibility settings -->
                         <div class="visibility-section">
                             <h3>📡 Видимость</h3>
                             <label class="checkbox-label">
@@ -183,19 +182,7 @@
         </div>
     </div>
 
-    <!-- Скрипт для кнопки визуализации -->
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const btn = document.getElementById("sceneVisualizerBtn");
-            if (btn) {
-                btn.addEventListener("click", () => {
-                    window.location.href = "./scene.html";
-                });
-            }
-        });
-    </script>
-
-    <!-- Scripts -->
+    <!-- Scripts - правильный порядок -->
     <script src="./js/utils/Constants.js"></script>
     <script src="./js/models/Scene.js"></script>
     <script src="./js/models/Participant.js"></script>
@@ -208,6 +195,6 @@
     <script src="./js/views/TeamView.js"></script>
     <script src="./js/views/EventsView.js"></script>
     <script src="./js/views/LocatorView.js"></script>
-    <script src="./js/app.js"></script>
+    <script src="./js/app.js?v=1758978379"></script>
 </body>
 </html>

@@ -6,7 +6,6 @@ const testParticipants = [
         phone: "+7999123456",
         avatar: "🎭",
         isFavorite: true,
-        blocked: false,
         status: {
             online: true,
             lastSeen: new Date().toISOString(),
@@ -32,7 +31,6 @@ const testParticipants = [
         phone: "+7988654321",
         avatar: "🎯",
         isFavorite: false,
-        blocked: false,
         status: {
             online: true,
             lastSeen: new Date(Date.now() - 300000).toISOString(),
@@ -58,7 +56,6 @@ const testParticipants = [
         phone: "+7977555444",
         avatar: "🛡️",
         isFavorite: true,
-        blocked: false,
         status: {
             online: false,
             lastSeen: new Date(Date.now() - 1800000).toISOString(),
@@ -84,7 +81,6 @@ const testParticipants = [
         phone: "+7966333222",
         avatar: "🔧",
         isFavorite: false,
-        blocked: false,
         status: {
             online: true,
             lastSeen: new Date().toISOString(),
@@ -133,4 +129,21 @@ const protocolStatus = {
         description: "ZigBee сеть",
         details: "Статус: недоступно\nПоддержка: в разработке\nПланы: mesh-сеть для больших команд"
     }
+};
+
+const futureScenes = {
+    current: null,
+    available: [
+        {
+            id: "mountain_hike_2024",
+            name: "Поход в горы 2024",
+            description: "Зимний поход в горы с командой",
+            roles: {
+                "alpha_001": ["leader", "navigator"],
+                "bravo_002": ["medic", "photographer"], 
+                "charlie_003": ["security", "cook"],
+                "delta_004": ["tech", "equipment"]
+            }
+        }
+    ]
 };
